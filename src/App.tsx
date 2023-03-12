@@ -1,45 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import Form from "./components/Form";
+import List from "./components/List";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  // Switch,
-  Route,
-  Routes,
-} from "react-router-dom";
-import "./App.css";
-import { Fragment } from "react";
-
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <h1>Chào anh em</h1>
-        {/* <Routes>
-          {publicRoutes.map((route, index) => {
-            let Layout = DefaulLayout;
-            if (route.layout) {
-              Layout = route.layout;
-            } else if (route.layout === null) {
-              Layout = Fragment;
-            }
-            // hiển thị các component theo đường path
-            const Page = route.component;
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <Layout>
-                    <Page />
-                  </Layout>
-                }
-              />
-            );
-          })}
-        </Routes> */}
-      </div>
-    </Router>
-  );
+export interface IState {
+  people: {
+    name: string;
+    age: number;
+    bio: string;
+  }[];
 }
+const App = () => {
+  const [people, setPeople] = useState<IState["people"]>([
+    { name: "anh tuan", age: 22, bio: "chơi" },
+  ]);
+  return (
+    <div className="container">
+      <Form people={people} setPeople={setPeople} />
+      <List people={people} />
+    </div>
+  );
+};
 
 export default App;
