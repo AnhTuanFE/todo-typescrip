@@ -1,0 +1,9 @@
+.login {
+  flex: 0 0 45%;
+}
+.login_item {
+}
+.login_input {
+  border: 1px solid lightgray;
+  flex: 2;
+}
